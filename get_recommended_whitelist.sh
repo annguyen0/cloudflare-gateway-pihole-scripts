@@ -32,7 +32,6 @@ urls=(
     # https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/referral-sites.txt
     https://raw.githubusercontent.com/nextdns/click-tracking-domains/main/domains
 
-
 )
 
 # download all files in parallel and append them to whitelist.csv
