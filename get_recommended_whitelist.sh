@@ -30,13 +30,8 @@ urls=(
     https://raw.githubusercontent.com/AdguardTeam/HttpsExclusions/master/exclusions/firefox.txt
     # Commented out because it whitelists sites including doubleclick.net and ad.atdmt.com
     # https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/referral-sites.txt
-<<<<<<< HEAD
     https://raw.githubusercontent.com/nextdns/click-tracking-domains/main/domains
 
-=======
-    # Uncomment the line below to use OISD's most commmonly whitelisted list
-    # https://local.oisd.nl/extract/commonly_whitelisted.php
->>>>>>> f244acd (Update get_recommended_whitelist.sh)
 
 )
 
