@@ -27,6 +27,9 @@ jobs:
       run: |
         node cf_gateway_rule_delete.js
         node cf_list_delete.js
+        node cf_gateway_rule_delete_added.js
+        node cf_list_delete_added.js
+
       env:
         CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
         CLOUDFLARE_ACCOUNT_EMAIL: ${{ secrets.CLOUDFLARE_ACCOUNT_EMAIL }}
