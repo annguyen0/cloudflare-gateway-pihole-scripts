@@ -1,5 +1,6 @@
 #!/bin/bash
 
+node download_lists.js blocklist
 source $(dirname "$0")/lib/helpers.sh
 
 # declare an array of urls
