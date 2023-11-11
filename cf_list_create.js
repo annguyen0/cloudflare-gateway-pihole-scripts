@@ -12,7 +12,7 @@ import {
   LIST_ITEM_SIZE,
   PROCESSING_FILENAME,
 } from "./lib/constants.js";
-import { normalizeDomain } from "./lib/helpers.js";
+import { normalizeDomain, notifyWebhook } from "./lib/helpers.js";
 import {
   extractDomain,
   isComment,
@@ -118,15 +118,15 @@ await readFile(resolve(`./${blocklistFilename}`), (line, rl) => {
   }
 });
 
+const numberOfLists = Math.ceil(domains.length / LIST_ITEM_SIZE);
+
 console.log("\n\n");
 console.log(`Number of processed domains: ${processedDomainCount}`);
 console.log(`Number of duplicate domains: ${duplicateDomainCount}`);
 console.log(`Number of unnecessary domains: ${unnecessaryDomainCount}`);
 console.log(`Number of blocked domains: ${domains.length}`);
 console.log(`Number of allowed domains: ${allowedDomainCount}`);
-console.log(
-  `Number of lists to be created: ${Math.ceil(domains.length / LIST_ITEM_SIZE)}`
-);
+console.log(`Number of lists to be created: ${numberOfLists}`);
 console.log("\n\n");
 
 (async () => {
@@ -137,10 +137,18 @@ console.log("\n\n");
     return;
   }
 
+  console.log(
+    `Creating ${numberOfLists} lists for ${domains.length} domains...`
+  );
+
   if (FAST_MODE) {
     await createZeroTrustListsAtOnce(domains);
+    // TODO: make this less repetitive
+    await notifyWebhook(`CF List Create script finished running (${domains.length} domains, ${numberOfLists} lists)`);
     return;
   }
 
   await createZeroTrustListsOneByOne(domains);
+
+  await notifyWebhook(`CF List Create script finished running (${domains.length} domains, ${numberOfLists} lists)`);
 })();
