@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "start": "npm run download && npm run cloudflare-delete && npm run cloudflare-create",
+    "start": "npm run download && npm run cloudflare-create",
     "dry": "npm run download && DRY_RUN=1 npm run cloudflare-create:list",
     "download": "node download_lists.js",
     "download:allowlist": "node download_lists.js allowlist",
     "download:blocklist": "node download_lists.js blocklist",
+    "cloudflare-refresh": "npm run download && npm run cloudflare-create",
+    "cloudflare-refresh:blocklist": "npm run download:blocklist && npm run cloudflare-create",
     "cloudflare-create": "npm run cloudflare-create:list && npm run cloudflare-create:rule",
     "cloudflare-delete": "npm run cloudflare-delete:rule && npm run cloudflare-delete:list",
     "cloudflare-create:rule": "node cf_gateway_rule_create.js",
@@ -14,10 +16,10 @@
   },
   "type": "module",
   "dependencies": {
-    "dotenv": "16.6.1",
+    "dotenv": "17.2.3",
     "node-fetch": "3.3.2"
   },
   "engines": {
-    "node": "22.19.0"
+    "node": "24.11.0"
   }
 }
