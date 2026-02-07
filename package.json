@@ -17,10 +17,10 @@
   },
   "type": "module",
   "dependencies": {
-    "dotenv": "17.2.3",
+    "dotenv": "17.2.4",
     "node-fetch": "3.3.2"
   },
   "engines": {
-    "node": "24.11.1"
+    "node": "24.13.0"
   }
 }
